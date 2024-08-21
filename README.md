@@ -12,7 +12,7 @@ Foi criado um modelo inicial básico para verificar o resultado sem nenhum tipo 
 
 ## [Etapa 2: Limpeza dos dados](https://github.com/sandrajak/HousePrices/blob/main/Etapa2.ipynb)
 - Iniciamos o processo de **limpeza dos dados**, analisando **valores vazios e informações faltantes** para escolher a melhor estratégia de tratamento.
-- Em algumas colunas os valores vazios representavam **ausência dos atributos na casa**, como por exemplo o valor vazio na coluna de garagem significava que aquele imóvel não possuia garagem. Nesse caso o vazio **era uma informação**.
+- Em algumas colunas parte dos valores vazios na verdade eram **atributos que a casa não tinha**, como por exemplo valores vazios nas colunas relacionadas a garagem indicavam que aquele imóvel não possuia garagem. Nesse caso o vazio **era uma informação**.
 - Em outros casos a informação realmente estava ausente, então usamos tratamentos como **substituir pela média da coluna**, **utilizar uma agregação para encontrar a melhor média para o atributo**, **utilizar a moda**, entre outros.
 - Utilizamos os mesmos modelos da etapa 1 (o que pode ser visto no arquivo **[Etapa2Modelos](https://github.com/sandrajak/HousePrices/blob/main/Etapa2Modelos.ipynb)**) e o **score público retornado pelo Kaggle foi: 0,33711.**
 
@@ -20,8 +20,8 @@ Foi criado um modelo inicial básico para verificar o resultado sem nenhum tipo 
 - Com a base gerada na etapa 2 - com os dados já tratados, começamos analisando a **correlação entre as variáveis numéricas e os valores mais frequentes das variáveis de texto**.
 - Para tratar colunas do tipo texto, primeiramente **eliminamos as colunas com muitos valores iguais** e depois **utilizamos lambda function e funções próprias para fazer os tratamentos**.
 - Além disso, também foi utilizado o **[OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) para o tratamento das variáveis que não possuem relação de ordem** e o **[OrdinalEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html) para aquelas ordenadas**.
-- Por fim, **nos aprofundamos nas colunas de garagem** para fazer um completo entendimento dessa categoria de variáveis. Com mais tempo e melhor entendimento do negócio, poderíamos estender essa análise para todos os outros grupos de colunas.
+- Então, **nos aprofundamos nas colunas de garagem** para fazer um completo entendimento dessa categoria de variáveis. Também analisamos mais 2 variáveis que poderiam ter uma **correlação mais direta com o preço das casas**: qualidade da cozinha e do material do exterior.
+- Por fim, analisamos as colunas que tem maior correlação com a coluna alvo, em **busca de outliers significativos**. Eliminamos alguns destes, para ver como o modelo se comportaria.
 - Nessa etapa foram geradas 2 bases, e aplicados os mesmos algoritmos e métodos de avaliação de erros anteriores:
    - a primeira (_1) onde **selecionamos apenas as colunas que analisamos a fundo**: executamos os modelos no arquivo **[Etapa3_1Modelos](https://github.com/sandrajak/HousePrices/blob/main/Etapa3_1Modelos.ipynb)** e tivemos um **score público do Kaggle de 0,35619.**
-   - a segunda (_2) onde fizemos um **tratamento genérico para todas as demais colunas de texto**: para essa base foi executado o **[Etapa3_2Modelos](https://github.com/sandrajak/HousePrices/blob/main/Etapa3_2Modelos.ipynb)** e tivemos um **score público do Kaggle de 0,45827.**
-    - Esses resultados piores ocorreram, provavelmente, devido ao aumento considerável do número de colunas e aos modelos utilizados. Isso será tratado nas próximas etapas!
+   - a segunda (_2) onde fizemos um **tratamento em apenas mais 2 colunas de texto** e **excluímos alguns outliers significativos**: para essa base foi executado o **[Etapa3_2Modelos](https://github.com/sandrajak/HousePrices/blob/main/Etapa3_2Modelos.ipynb)** e tivemos um **score público do Kaggle de 0,17124.**
