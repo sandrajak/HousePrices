@@ -24,4 +24,11 @@ Foi criado um modelo inicial básico para verificar o resultado sem nenhum tipo 
 - Por fim, analisamos as colunas que tem maior correlação com a coluna alvo, em **busca de outliers significativos**. Eliminamos alguns destes, para ver como o modelo se comportaria.
 - Nessa etapa foram geradas 2 bases, e aplicados os mesmos algoritmos e métodos de avaliação de erros anteriores:
    - a primeira (_1) onde **selecionamos apenas as colunas que analisamos a fundo**: executamos os modelos no arquivo **[Etapa3_1Modelos](https://github.com/sandrajak/HousePrices/blob/main/Etapa3_1Modelos.ipynb)** e tivemos um **score público do Kaggle de 0,35619.**
-   - a segunda (_2) onde fizemos um **tratamento em apenas mais 2 colunas de texto** e **excluímos alguns outliers significativos**: para essa base foi executado o **[Etapa3_2Modelos](https://github.com/sandrajak/HousePrices/blob/main/Etapa3_2Modelos.ipynb)** e tivemos um **score público do Kaggle de 0,17124.**
+   - a segunda (_2) onde fizemos um **tratamento apenas em mais 2 colunas de texto** e **excluímos alguns outliers significativos**: para essa base foi executado o **[Etapa3_2Modelos](https://github.com/sandrajak/HousePrices/blob/main/Etapa3_2Modelos.ipynb)** e tivemos um **score público do Kaggle de 0,17124.**
+
+## Etapa 4: Testando algoritmos novos
+- Introduzimos 2 novos modelos para testar além da regressão linear (modelo que tinha gerado o melhor resultado até então). Esses modelos são indicados na própria competição do Kaggle: **[RandomForestRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor)** e **[XGBoost](https://xgboost.readthedocs.io/en/stable/index.html)**.
+- Executamos esses 2 algoritmos novos nos mesmos arquivos:
+  - No arquivo usado para testar os modelos anteriores na Etapa3_1, executamos o **[Etapa4_1](https://github.com/sandrajak/HousePrices/blob/main/Etapa4_1.ipynb)**. Optamos pelo Random Forest pois apresentou o menor erro quadrático médio, sendo que tivemos um **score público do Kaggle de 0,15288.**
+  - Já com o mesmo arquivo da Etapa3_2 - executados no **[Etapa4_2](https://github.com/sandrajak/HousePrices/blob/main/Etapa4_2.ipynb)**, o Random Forest apresentou um erro quadrático médio apenas um pouco acima da regressão linear nos dados de validação, e o **score público no Kaggle foi de 0,15371.**
+- Apenas com a alteração do modelo conseguimos melhorar o resultado!
